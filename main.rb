@@ -59,3 +59,11 @@ delete '/adventures/:id' do
   adventure.destroy
   redirect '/'
 end
+
+post '/comments' do
+  comment = Comment.new
+  comment.body = params[:body]
+  comment.adventure_id = params[:adventure_id]
+  comment.save
+  redirect "/adventures/#{comment.adventure_id}"
+end
