@@ -32,6 +32,12 @@ end
 
 
 get '/adventures/:id' do
+  #   redirect '/login' unless logged_in?
   @adventure = Adventure.find(params[:id])
   erb :show
+end
+
+get'/adventures/:id/edit' do
+  @adventure = Adventure.find(params[:id])
+  erb :edit
 end

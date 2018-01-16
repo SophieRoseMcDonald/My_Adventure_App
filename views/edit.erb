@@ -1,0 +1,22 @@
+<h2>Edit</h2>
+
+<form action="/adventures/<%=@adventure.id%>" method="post">
+  <input type="hidden" name="_method" value="put">
+
+  <label for="">name</label>
+  <input name = "name" type="text" value= "<%=@adventure.name%>">
+
+  <label for="">Image URL</label>
+  <input name="image_url" type="text" value="<%=@adventure.image_url%>">
+
+  <label for="">Address</label>
+  <input name= "address" type="text" value="<%=@adventure.address%>">
+
+  <label for="">Details</label>
+  <input name= "Details" type="text" value="<%=@adventure.details%>">
+
+  <label for="">Special Mention</label>
+  <input name= "special_mention" type="text" value="<%=@adventure.special_mention%>">
+
+  <button>Update</button>
+</form>
