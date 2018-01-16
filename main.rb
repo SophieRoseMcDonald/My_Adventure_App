@@ -67,3 +67,42 @@ post '/comments' do
   comment.save
   redirect "/adventures/#{comment.adventure_id}"
 end
+
+
+get '/login' do
+  erb :login
+end
+
+post '/session' do
+  #check email exists
+  user = User.find_by(email: params[:email])
+  #have a user and authenticate return truthy
+  #check password
+  if user && user.authenticate(params[:password])
+    session[:user_id] = user.id #just a hash
+    redirect '/'
+  else
+    erb :login
+  end
+end
+
+delete '/session' do
+  session[:user_id] = nil
+  redirect '/login'
+end
+
+
+helpers do
+  def current_user
+    User.find_by(id: session[:user_id])
+  end
+
+  def logged_in? #this method returns a boolean
+    !!current_user # !! negates the current_user converting it to a true or false
+  #   if session[:user_id]
+  #     return true
+  #   else
+  #     return false
+  #   end
+  end
+end
