@@ -8,6 +8,7 @@ require_relative 'models/tag'
 require_relative 'models/comment'
 require_relative 'models/user'
 
+enable :sessions
 
 get '/' do
    @adventure = Adventure.all
