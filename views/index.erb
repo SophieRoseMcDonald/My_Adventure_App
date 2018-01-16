@@ -4,6 +4,7 @@
 
 
  <% @adventure.each do |adventure| %>
+ <a href="/dishes/<%=adventure.id%>"></a>
    <p> <%= adventure.name %> </p>
    <img src="<%= adventure.image_url %>" alt="">
 

@@ -33,8 +33,9 @@ end
 
 #read
 get '/adventures/:id' do
-  #   redirect '/login' unless logged_in?
+  redirect '/login' unless logged_in?
   @adventure = Adventure.find(params[:id])
+    @comment = Comment.where(adventure_id: @adventure.id)
   erb :show
 end
 
