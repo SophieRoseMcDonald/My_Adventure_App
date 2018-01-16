@@ -1,0 +1,10 @@
+<h1>My adventure INDEX</h1>
+
+<a href="/adventures/new">Add a new destination</a>
+
+
+ <% @adventure.each do |adventure| %>
+   <p> <%= adventure.name %> </p>
+   <img src="<%= adventure.image_url %>" alt="">
+
+ <% end %>
