@@ -11,7 +11,7 @@ CREATE TABLE adventures (
   special_mention VARCHAR(400)
 );
 --joining adventure & tag tables
-CREATE TABLE adventure_tags (
+CREATE TABLE adventures_tags (
   id SERIAL PRIMARY KEY,
   tag_id INTEGER NOT NULL,
   adventure_id INTEGER NOT NULL,

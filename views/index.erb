@@ -1,11 +1,17 @@
-<h1>My adventure INDEX</h1>
-
-<a href="/adventures/new">Add a new destination</a>
-
+<div class="adventure_index">
 
  <% @adventure.each do |adventure| %>
- <a href="/dishes/<%=adventure.id%>"></a>
-   <p> <%= adventure.name %> </p>
-   <img src="<%= adventure.image_url %>" alt="">
+ <a href="/adventures/<%=adventure.id%>">
+   <p> <%= adventure.name %> </p> </a>
+   <img class="adventure_image" src="<%= adventure.image_url %>" alt="">
+ <% end %>
+ 
+</div>
+<div class="tag_index">
+
+ <% @tag.each do |tag| %>
+   <p> <%= tag.tag_name %> </p>
+
 
  <% end %>
+</div>

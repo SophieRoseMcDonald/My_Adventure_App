@@ -2,7 +2,7 @@
 require 'sinatra'
 require 'sinatra/reloader'
 
-require_relative 'db_config'
+require_relative 'db_config' #db_config must go above models
 require_relative 'models/adventure'
 require_relative 'models/tag'
 require_relative 'models/comment'
@@ -12,22 +12,23 @@ enable :sessions
 
 get '/' do
    @adventure = Adventure.all
+   @tag = Tag.all
   erb :index
 end
 #Create
 get '/adventures/new' do
   erb :new
 end
-
+#add/save adventure to database
 post '/adventures' do
-adventure = Adventure.new
-adventure.name = params[:name]
-adventure.image_url = params[:image_url]
-adventure.address = params[:address]
-adventure.details = params[:details]
-adventure.special_mention = params[:special_mention]
-adventure.save
-redirect '/'
+  adventure = Adventure.new
+  adventure.name = params[:name]
+  adventure.image_url = params[:image_url]
+  adventure.address = params[:address]
+  adventure.details = params[:details]
+  adventure.special_mention = params[:special_mention]
+  adventure.save
+  redirect '/'
   # http://www.banyulenillumbikkids.com.au/web/wp-content/uploads/2016/08/park.jpg
 end
 
@@ -35,7 +36,8 @@ end
 get '/adventures/:id' do
   redirect '/login' unless logged_in?
   @adventure = Adventure.find(params[:id])
-    @comment = Comment.where(adventure_id: @adventure.id)
+  @comments = Comment.where(adventure_id: @adventure.id)
+  @tags = @adventure.tags
   erb :show
 end
 
@@ -44,7 +46,7 @@ get'/adventures/:id/edit' do
   @adventure = Adventure.find(params[:id])
   erb :edit
 end
-
+#update
 put '/adventures/:id' do
   adventure = Adventure.find(params[:id])
   adventure.name = params[:name]
@@ -55,13 +57,13 @@ put '/adventures/:id' do
   adventure.save
   redirect "adventures/#{params[:id]}"
 end
-
+#delete adventure
 delete '/adventures/:id' do
   adventure = Adventure.find(params[:id])
   adventure.destroy
   redirect '/'
 end
-
+#comments
 post '/comments' do
   comment = Comment.new
   comment.body = params[:body]
@@ -70,7 +72,19 @@ post '/comments' do
   redirect "/adventures/#{comment.adventure_id}"
 end
 
+# get '/registration' do
+#   erb :registration
+# end
+#
+# get '/users' do
+#   user = User.new
+#   user.email = params[:email]
+#   user.password = params[:password]
+#   user.save
+#   redirect '/'
+# end
 
+#login
 get '/login' do
   erb :login
 end

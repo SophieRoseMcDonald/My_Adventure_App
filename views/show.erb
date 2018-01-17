@@ -1,20 +1,26 @@
-<h2> Adventure Location 1</h2>
+<div class="show_adventure">
 
-<h1><%=@adventure.name%></h1>
-<img src="<%=@adventure.image_url%>" alt="">
+  <h1><%=@adventure.name%></h1>
+  <img class="adventure_image" src="<%=@adventure.image_url%>" alt="">
+  <h3><%=@adventure.address%></h3>
+  <p><%=@adventure.details%></p>
+  <p><%=@adventure.special_mention%></p>
 
-<form action="/adventures/<%=@adventure.id%>" method="post">
-  <input type="hidden" name="_method" value="delete">
-  <button>Delete</button>
-</form>
+  <% @tags.each do |tag| %>
+    <p> <%= tag.tag_name %> </p>
+  <% end %>
+  <form action="/adventures/<%=@adventure.id%>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <button>Delete</button>
+  </form>
 
-<a href="/adventures/<%=@adventure.id%>/edit">Edit</a>
-<% @comment.each do |comment| %>
-<p><%= comment.body %></p>
-<% end %>
-
-<form class="" action="/comments" method="post">
-<input type="hidden" name="adventure_id" value="<%= @adventure.id %>">
-  <textarea name="body" rows="8" cols="80"></textarea>
-  <button>Add Comment</button>
-</form>
+  <a href="/adventures/<%=@adventure.id%>/edit">Edit</a>
+  <% @comments.each do |comment| %>
+    <p><%= comment.body %></p>
+  <% end %>
+  <form class="" action="/comments" method="post">
+  <input type="hidden" name="adventure_id" value="<%= @adventure.id %>">
+    <textarea name="body" rows="8" cols="80"></textarea>
+    <button>Add Comment</button>
+  </form>
+</div>
