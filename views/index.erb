@@ -2,7 +2,7 @@
 
  <% @adventure.each do |adventure| %>
      <a href="/adventures/<%=adventure.id%>">
-       <p> <%= adventure.name %> </p>
+       <p class="adventure_names"> <%= adventure.name %> </p>
 
    <img class="adventure_image" src="<%= adventure.image_url %>" alt="">
  <% end %>

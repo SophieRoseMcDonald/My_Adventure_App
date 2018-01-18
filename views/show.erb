@@ -3,16 +3,16 @@
   <!-- adventure -->
   <div class="location_wrapper">
     <h1><%=@adventure.name%></h1>
-      <img class="adventure_image" src="<%=@adventure.image_url%>" alt="">
+    <img class="adventure_image" src="<%=@adventure.image_url%>" alt="">
     <h3><%=@adventure.address%></h3>
-      <p><%=@adventure.details%></p>
-      <p><%=@adventure.special_mention%></p>
+    <p><%=@adventure.details%></p>
+    <p><%=@adventure.special_mention%></p>
   </div>
 
   <!-- tags -->
   <div class="tag_wrapper">
     <% @tags.each do |tag| %>
-    <button class="btn tag"><%= tag.tag_name %></button>
+      <button class="btn tag"><%= tag.tag_name %></button>
     <% end %>
   </div>
 
@@ -27,39 +27,20 @@
     <button><a href="/adventures/<%=@adventure.id%>/edit">Update Adventure</a></button>
   </div>
 
-    <!-- map -->
-  <div id="map_wrapper">
-    <div id="map"></div>
-      <script>
-        var map;
-        function initMap() {
-          map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: -34.397, lng: 150.644},
-            zoom: 8
-          });
-        }
-      </script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyACCs8Ut6aVSuu4RyOYqsP9XjOHZDuI2ks&callback=initMap"
-        async defer></script>
-    </div>
-  </div> -->
     <!-- #comments -->
     <div class="comments">
-    <p>
+      <p>
       <% @comments.each do |comment| %>
         <p><%= comment.body %></p>
       <% end %>
-    </p>
+      </p>
 
 
       <form class="" action="/comments" method="post">
         <input type="hidden" name="adventure_id" value="<%= @adventure.id %>">
-          <textarea name="body" rows="8" cols="80"></textarea>
+        <textarea name="body" rows="8" cols="80"></textarea>
         <p><button>Add Comment</button></p>
 
       </form>
+    </div>
   </div>
-
-  <footer>
-
-  </footer>
