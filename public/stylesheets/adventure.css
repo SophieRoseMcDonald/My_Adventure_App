@@ -37,9 +37,9 @@ h1{
 }
 
 nav {
-  background-color: linen;
+  background-color: #777;
   text-align: center;
-  padding: 2%;
+  padding: 4%;
 }
 
 img.map {
@@ -70,6 +70,7 @@ img.adventure_image {
   display: flex;
   align-items:center;
   flex-direction: column;
+  background-color: white;
 
 }
 .show_adventure {
@@ -80,4 +81,20 @@ img.adventure_image {
 
 .edit_form {
 
+}
+.btn {
+    border: none;
+    background-color: inherit;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+    color: dodgerblue;;
+}
+
+footer {
+  width: 100%;
+  background-color: #777;
+  text-align: center;
+  padding: 5%;
 }

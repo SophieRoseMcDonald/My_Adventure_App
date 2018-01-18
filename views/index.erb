@@ -1,11 +1,13 @@
 <div class="adventure_index">
 
  <% @adventure.each do |adventure| %>
- <a href="/adventures/<%=adventure.id%>">
-   <p> <%= adventure.name %> </p> </a>
+     <a href="/adventures/<%=adventure.id%>">
+       <p> <%= adventure.name %> </p>
+
    <img class="adventure_image" src="<%= adventure.image_url %>" alt="">
  <% end %>
- 
+</a>
+
 </div>
 <div class="tag_index">
 
