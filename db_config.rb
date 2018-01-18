@@ -1,4 +1,4 @@
-require 'pg'
+
 
 #settings for active_record
 require 'active_record'
