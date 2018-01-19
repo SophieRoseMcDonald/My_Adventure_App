@@ -2,7 +2,7 @@
 require 'sinatra'
 require 'pry'
 
-require 'sinatra/reloader'
+# require 'sinatra/reloader'
 require_relative 'db_config' # db_config must go above models
 require_relative 'models/adventure'
 require_relative 'models/tag'
