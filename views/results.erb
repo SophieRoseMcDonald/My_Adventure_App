@@ -1,0 +1,10 @@
+<% if @adventure.present? %>
+  <% @adventure.each do |adventure| %>
+  <a href="/adventures/<%=adventure.id%>"><p><%= adventure.name %></p></a>
+
+  <% end %>
+
+<% else %>
+    <p>There are no Adventures containing the term(s)<%= params[:query] %>.</p>
+
+<% end %>

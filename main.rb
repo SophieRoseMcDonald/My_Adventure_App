@@ -1,8 +1,9 @@
 
 require 'sinatra'
+require 'pry'
 
-# require_relative 'sinatra/reloader'
-require_relative 'db_config' #db_config must go above models
+require 'sinatra/reloader'
+require_relative 'db_config' # db_config must go above models
 require_relative 'models/adventure'
 require_relative 'models/tag'
 require_relative 'models/comment'
@@ -11,15 +12,20 @@ require_relative 'models/user'
 enable :sessions
 
 get '/' do
-   @adventure = Adventure.all
-   @tag = Tag.all
+  if Tag.find_by(id: params[:tag_id])
+    @adventure = Tag.find(params[:tag_id]).adventures
+  else
+    @adventure = Adventure.all
+  end
+
+  @tag = Tag.all
   erb :index
 end
-#Create
+# Create
 get '/adventures/new' do
   erb :new
 end
-#add/save adventure to database
+# add/save adventure to database
 post '/adventures' do
   adventure = Adventure.new
   adventure.name = params[:name]
@@ -32,7 +38,7 @@ post '/adventures' do
   # http://www.banyulenillumbikkids.com.au/web/wp-content/uploads/2016/08/park.jpg
 end
 
-#read
+# read
 get '/adventures/:id' do
   redirect '/login' unless logged_in?
   @adventure = Adventure.find(params[:id])
@@ -41,12 +47,12 @@ get '/adventures/:id' do
   erb :show
 end
 
-#update
-get'/adventures/:id/edit' do
+# update
+get '/adventures/:id/edit' do
   @adventure = Adventure.find(params[:id])
   erb :edit
 end
-#update
+# update
 put '/adventures/:id' do
   adventure = Adventure.find(params[:id])
   adventure.name = params[:name]
@@ -57,19 +63,31 @@ put '/adventures/:id' do
   adventure.save
   redirect "adventures/#{params[:id]}"
 end
-#delete adventure
+# delete adventure
 delete '/adventures/:id' do
   adventure = Adventure.find(params[:id])
   adventure.destroy
   redirect '/'
 end
-#comments
+# comments
 post '/comments' do
   comment = Comment.new
   comment.body = params[:body]
   comment.adventure_id = params[:adventure_id]
   comment.save
   redirect "/adventures/#{comment.adventure_id}"
+end
+
+get '/search' do
+  # @Adventure = Adventure.all
+  @adventure = if params[:query]
+
+                 Adventure.search(params[:query])
+
+               else
+                 Adventure.all
+               end
+  erb :results
 end
 
 # get '/registration' do
@@ -84,18 +102,18 @@ end
 #   redirect '/'
 # end
 
-#login
+# login
 get '/login' do
   erb :login
 end
 
 post '/session' do
-  #check email exists
+  # check email exists
   user = User.find_by(email: params[:email])
-  #have a user and authenticate return truthy
-  #check password
+  # have a user and authenticate return truthy
+  # check password
   if user && user.authenticate(params[:password])
-    session[:user_id] = user.id #just a hash
+    session[:user_id] = user.id # just a hash
     redirect '/'
   else
     erb :login
@@ -107,18 +125,17 @@ delete '/session' do
   redirect '/login'
 end
 
-
 helpers do
   def current_user
     User.find_by(id: session[:user_id])
   end
 
-  def logged_in? #this method returns a boolean
+  def logged_in? # this method returns a boolean
     !!current_user # !! negates the current_user converting it to a true or false
-  #   if session[:user_id]
-  #     return true
-  #   else
-  #     return false
-  #   end
+    #   if session[:user_id]
+    #     return true
+    #   else
+    #     return false
+    #   end
   end
 end

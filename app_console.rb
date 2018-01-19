@@ -6,5 +6,5 @@ require_relative 'models/tag'
 require_relative 'models/comment'
 require_relative 'models/user'
 
-# binding.pry
-# putd 'paused'
+binding.pry
+puts 'paused'

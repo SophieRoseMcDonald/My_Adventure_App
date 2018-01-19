@@ -15,14 +15,20 @@
         <nav>
           <a class="nav_link" href="/">Home</a>
           <a class="nav_link" href="/adventures/new">Add a new destination</a>
-          <a class="nav_link" href="/">Search</a>
-          <%= session[:user_id] %>
+
+          <form action="/search" method="get">
+            <input type="Search" name="query" placeholder="search">
+            <button id="searchbutton">Search</button>
+          </form>
+
+          <!-- <a class="nav_link" href="/">Search</a> -->
+          <!-- <%= session[:user_id] %> -->
 
           <% if logged_in? %>
-            <p>logged in as <%= current_user.email%> </p>
+            <!-- <p>logged in as <%= current_user.email%> </p> -->
             <form action="/session" method="post">
               <input type="hidden" name="_method" value="delete">
-              <button>Log Out</button>
+              <button id='logout'>Log Out</button>
             </form>
           <% end %>
         </nav>

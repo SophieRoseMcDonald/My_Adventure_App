@@ -12,7 +12,8 @@
   <!-- tags -->
   <div class="tag_wrapper">
     <% @tags.each do |tag| %>
-      <button class="btn tag"><%= tag.tag_name %></button>
+    <a href="/?tag_id=<%=params[:id]%>"><%= tag.tag_name %></a>
+
     <% end %>
   </div>
 
@@ -21,10 +22,10 @@
     <!-- delete adventure -->
     <form action="/adventures/<%=@adventure.id%>" method="post">
       <input type="hidden" name="_method" value="delete">
-      <button>Delete Adventure</button>
+      <button id="deletebutton">Delete Adventure</button>
     </form>
   <!-- edit adventure-->
-    <button><a href="/adventures/<%=@adventure.id%>/edit">Update Adventure</a></button>
+    <button id="edit"><a id="edit" href="/adventures/<%=@adventure.id%>/edit">Update Adventure</a></button>
   </div>
 
     <!-- #comments -->
@@ -39,7 +40,7 @@
       <form class="" action="/comments" method="post">
         <input type="hidden" name="adventure_id" value="<%= @adventure.id %>">
         <textarea name="body" rows="8" cols="80"></textarea>
-        <p><button>Add Comment</button></p>
+        <p><button id="addcomment">Add Comment</button></p>
 
       </form>
     </div>

@@ -3,7 +3,7 @@
 }
 
 html, body {
-  font-family: 'Kavivanar';
+  font-family: 'Roboto';
   text-align: center;
   height: 100%;
   margin: 0;
@@ -31,8 +31,11 @@ h1{
   font-family: 'Tangerine';
   font-size: 60px;
   text-shadow: 4px 4px 4px #aaa;
-
 }
+h2 {
+    text-shadow: 4px 4px 4px #aaa;
+}
+
 a {
   font-family: 'Tangerine';
   text-decoration: none;
@@ -47,8 +50,14 @@ nav {
   text-align: center;
   padding: 4%;
 }
+
 .nav_link {
+  font-size: 40px;
   padding: 8px;
+
+}
+.nav_link:hover {
+  text-shadow: 4px 4px 4px #aaa;
 }
 
  #map_wrapper {
@@ -75,11 +84,15 @@ nav {
 
 }
 
+/* a #locationbtn {
+  border: 4px, solid, black;
+} */
  .adventure_index{
   display: flex;
   align-items:center;
   flex-direction: column;
   background-color: white;
+
 
 }
 
@@ -102,15 +115,16 @@ button {
   font-size: 30px;
   color: black;
   font-weight: bold;
+  margin-bottom: 10px;
 
 }
-.tag_wrapper{
-    font-family: 'Kavivanar'
+/* .tag_wrapper{
+    font-family: 'Kavivanar' */
 }
-.btn {
+button#btntag {
     border: none;
     background-color: inherit;
-    font-family: 'Kavivanar'
+    font-family: 'Roboto'
     padding: 14px 28px;
     font-size: 16px;
     cursor: pointer;
@@ -118,9 +132,25 @@ button {
     color: dodgerblue;
 }
 
+button#deletebutton{
+  border: none;
+}
+
+a#edit {
+  border: none;
+}
+
 footer {
   display:flex;
   width: 100%;
   background-color: #777;
   padding: 5%;
+}
+#addcomment{
+
+}
+
+#logout {
+  background-color: #777;
+  border: none;
 }

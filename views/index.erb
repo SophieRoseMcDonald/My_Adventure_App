@@ -1,8 +1,8 @@
 <div class="adventure_index">
 
  <% @adventure.each do |adventure| %>
-     <a href="/adventures/<%=adventure.id%>">
-       <p class="adventure_names"> <%= adventure.name %> </p>
+     <a id="locationbtn" href="/adventures/<%=adventure.id%>">
+       <h2 class="adventure_names"> <%= adventure.name %> </h2>
 
    <img class="adventure_image" src="<%= adventure.image_url %>" alt="">
  <% end %>
