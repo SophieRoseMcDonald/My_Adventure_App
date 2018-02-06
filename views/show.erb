@@ -12,11 +12,10 @@
   <!-- tags -->
   <div class="tag_wrapper">
     <% @tags.each do |tag| %>
-    <a href="/?tag_id=<%=params[:id]%>"><%= tag.tag_name %></a>
+      <a href="/?tag_id=<%=params[:id]%>"><%= tag.tag_name %></a>
 
     <% end %>
   </div>
-
 
   <div class="update_wrapper">
     <!-- delete adventure -->
@@ -24,24 +23,27 @@
       <input type="hidden" name="_method" value="delete">
       <button id="deletebutton">Delete Adventure</button>
     </form>
-  <!-- edit adventure-->
-    <button id="edit"><a id="edit" href="/adventures/<%=@adventure.id%>/edit">Update Adventure</a></button>
+    <!-- edit adventure-->
+    <button id="edit">
+      <a id="edit" href="/adventures/<%=@adventure.id%>/edit">Update Adventure</a>
+    </button>
   </div>
 
-    <!-- #comments -->
-    <div class="comments">
-      <p>
+  <!-- #comments -->
+  <div class="comments">
+    <p>
       <% @comments.each do |comment| %>
         <p><%= comment.body %></p>
       <% end %>
+    </p>
+
+    <form class="" action="/comments" method="post">
+      <input type="hidden" name="adventure_id" value="<%= @adventure.id %>">
+      <textarea name="body" rows="8" cols="80"></textarea>
+      <p>
+        <button id="addcomment">Add Comment</button>
       </p>
 
-
-      <form class="" action="/comments" method="post">
-        <input type="hidden" name="adventure_id" value="<%= @adventure.id %>">
-        <textarea name="body" rows="8" cols="80"></textarea>
-        <p><button id="addcomment">Add Comment</button></p>
-
-      </form>
-    </div>
+    </form>
   </div>
+</div>

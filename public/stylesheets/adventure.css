@@ -118,10 +118,11 @@ button {
   margin-bottom: 10px;
 
 }
-/* .tag_wrapper{
-    font-family: 'Kavivanar' */
+.tag_wrapper a{
+    font-family: 'Kavivanar';
+    color: mistyrose;
 }
-button#btntag {
+button #btntag {
     border: none;
     background-color: inherit;
     font-family: 'Roboto'
@@ -151,6 +152,10 @@ footer {
 }
 
 #logout {
+  background-color: #777;
+  border: none;
+}
+#searchbutton {
   background-color: #777;
   border: none;
 }

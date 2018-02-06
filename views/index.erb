@@ -1,19 +1,22 @@
 <div class="adventure_index">
 
- <% @adventure.each do |adventure| %>
-     <a id="locationbtn" href="/adventures/<%=adventure.id%>">
-       <h2 class="adventure_names"> <%= adventure.name %> </h2>
+  <% @adventure.each do |adventure| %>
+    <a id="locationbtn" href="/adventures/<%=adventure.id%>">
+      <h2 class="adventure_names">
+        <%= adventure.name %>
+      </h2>
 
-   <img class="adventure_image" src="<%= adventure.image_url %>" alt="">
- <% end %>
-</a>
+      <img class="adventure_image" src="<%= adventure.image_url %>" alt="">
+    <% end %>
+  </a>
 
 </div>
 <div class="tag_index">
 
- <% @tag.each do |tag| %>
-   <p> <%= tag.tag_name %> </p>
+  <% @tag.each do |tag| %>
+    <p>
+      <%= tag.tag_name %>
+    </p>
 
-
- <% end %>
+  <% end %>
 </div>
