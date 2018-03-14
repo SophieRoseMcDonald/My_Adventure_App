@@ -90,17 +90,17 @@ get '/search' do
   erb :results
 end
 
-# get '/registration' do
-#   erb :registration
-# end
+get '/registration' do
+  erb :registration
+end
 #
-# get '/users' do
-#   user = User.new
-#   user.email = params[:email]
-#   user.password = params[:password]
-#   user.save
-#   redirect '/'
-# end
+get '/users' do
+  user = User.new
+  user.email = params[:email]
+  user.password = params[:password]
+  user.save
+  redirect '/'
+end
 
 # login
 get '/login' do

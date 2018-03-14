@@ -1,41 +1,18 @@
+# My Adventure
+View my project here: https://myadventure.herokuapp.com/
 
-From: /Users/sophie/wdi/project2/myadventure/app_console.rb @ line 9 :
+### Overview
+I decided to create MyAdventure App to make planning weekend trips easier. Often when I am at home and planning a day trip with my family, I spend way too long trying to figure out where to go. Often when my family and I have decided to go somewhere, we need to check where it is and how long it will take us to get to the destination. On top of that we also want to define a search based of facilities available at the location. Does the location have public toilets, BBQ facilities or walking tracks?
 
-    4: require_relative 'models/adventure'
-    5: require_relative 'models/tag'
-    6: require_relative 'models/comment'
-    7: require_relative 'models/user'
-    8: binding.pry
- => 9: puts ' app console'
+### Challenges
+The challenge I faced during this project was working out the relationship between Tags and Locations.
+Multiple locations have multiple tags and visa versa, so I needed to create an inner joining table.
+Another thing that was a challenge was Google's Map API. Unfortunately I didn't have enough time to get familiar with google maps, but this is something I will come back and fix later.
 
-[1] pry(main)> adv = Adventure.first
-=> #<Adventure:0x007feac5cb96e0
- id: 1,
- name: "Possum Hollow",
- image_url: "http://www.banyulenillumbikkids.com.au/web/wp-content/uploads/2016/08/park.jpg",
- address: "Beverley Rd, Heidelberg",
- details: "Lorem lean startup ipsum product market fit customer development acquihire technical cofounder.",
- special_mention:
-  "fully fenced - good shade - bbqs - basketball court - flying foxes - public toilets - picnic shelter - walking trails nearby - sporting fields nearby - fitness equipment nearby">
-[2] pry(main)> adv.tags
-=> []
-[3] pry(main)> adv.tags.push
-=> []
-[4] pry(main)> adv.tags.push Tag.find(1)
-=> [#<Tag:0x007feac56ae098 id: 1, tag_name: "playground">]
-[5] pry(main)> adv.tags
-=> [#<Tag:0x007feac56ae098 id: 1, tag_name: "playground">]
-[6] pry(main)> adv.tags.push Tag.find_by('playground')
-ActiveRecord::StatementInvalid: PG::UndefinedColumn: ERROR:  column "playground" does not exist
-LINE 1: SELECT  "tags".* FROM "tags" WHERE (playground) LIMIT $1
-                                            ^
-: SELECT  "tags".* FROM "tags" WHERE (playground) LIMIT $1
-from /Users/sophie/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/activerecord-5.1.4/lib/active_record/connection_adapters/postgresql_adapter.rb:614:in `async_exec'
-[7] pry(main)> adv.tags.push Tag.find_by("bbq")
-ActiveRecord::StatementInvalid: PG::UndefinedColumn: ERROR:  column "bbq" does not exist
-LINE 1: SELECT  "tags".* FROM "tags" WHERE (bbq) LIMIT $1
-                                            ^
-: SELECT  "tags".* FROM "tags" WHERE (bbq) LIMIT $1
-from /Users/sophie/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/activerecord-5.1.4/lib/active_record/connection_adapters/postgresql_adapter.rb:614:in `async_exec'
-[8] pry(main)> adv.tags.push Tag.find_by(tag_name: 'playground')
-=> [#<Tag:0x007feac56ae098 id: 1, tag_name: "playground">, #<Tag:0x007feac3274060 id: 1, tag_name: "playground">]
+### Future Development
+I would like to return to this project and:
+* Fix google map API
+* Fix up styling in CSS
+* Display tags on main page
+* Add a search function to look for locations based on tags
+* Add more locations to the database
